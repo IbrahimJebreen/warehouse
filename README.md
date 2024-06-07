@@ -1,6 +1,6 @@
 # DealController
 
-The `DealController` class serves as the RESTful controller for managing deals within the warehouse system.
+The `DealController` class serves as the RESTFull controller for managing deals within the warehouse system.
 
 ## Controller Description
 
@@ -59,14 +59,14 @@ This validator class ensures the validity of ISO currency codes used in deals. I
 
 ### Validate
 
-The `validate` method checks the validity of the provided from and to currency ISO codes. It throws an `ISOCodeException` if either of the currency codes is null or if they are not valid ISO codes.
+The `validate` method checks the validity of the provided from and to currency ISO codes. It throws an `InvalidISOCodeException` if either of the currency codes is null or if they are not valid ISO codes.
 
 Parameters:
 - `fromCurrency`: The ISO currency code for the source currency.
 - `toCurrency`: The ISO currency code for the target currency.
 
 Exceptions:
-- `ISOCodeException`: Thrown if the from or to currency is null or if they are not valid ISO codes.
+- `InvalidISOCodeException`: Thrown if the from or to currency is null or if they are not valid ISO codes.
 
 
 # DealIdValidator
@@ -85,13 +85,13 @@ The constructor of the `DealIdValidator` class initializes the `DealRepository` 
 
 ### Validate
 
-The `validate` method checks the validity and uniqueness of the provided deal ID. It throws an `IdException` if the deal ID is zero or if it already exists in the database.
+The `validate` method checks the validity and uniqueness of the provided deal ID. It throws an `InvalidIdException` if the deal ID is zero or if it already exists in the database.
 
 Parameters:
 - `dealId`: The ID of the deal to be validated.
 
 Exceptions:
-- `IdException`: Thrown if the deal ID is zero or if it already exists in the database.
+- `InvalidIdException`: Thrown if the deal ID is zero or if it already exists in the database.
 
 
 ## AmountValidator
@@ -102,7 +102,7 @@ The `AmountValidator` class is responsible for validating amounts, typically rep
 
 #### `validate(BigDecimal amount)`
 
-This method takes a `BigDecimal` parameter representing the amount to be validated. It first checks if the amount is null. If it is null, an `AmountException` with the message "Amount is required" is thrown. Next, it compares the amount with zero. If the amount is less than or equal to zero, another `AmountException` is thrown with the message "The amount is less than or equal to zero".
+This method takes a `BigDecimal` parameter representing the amount to be validated. It first checks if the amount is null. If it is null, an `InvalidAmountException` with the message "Amount is required" is thrown. Next, it compares the amount with zero. If the amount is less than or equal to zero, another `AmountException` is thrown with the message "The amount is less than or equal to zero".
 
 ### Dependencies
 
@@ -135,7 +135,7 @@ The `TimeStampValidator` class is responsible for validating timestamp strings. 
 
 #### `validate(String timeStamp)`
 
-This method takes a `String` parameter representing the timestamp to be validated. It first checks if the timestamp is null. If it is null, a `TimeStampException` with the message "Time stamp is required" is thrown. Next, it attempts to parse the timestamp using `LocalDateTime.parse()`. If the parsing fails due to an invalid format, a `TimeStampException` with the message "Invalid format" is thrown.
+This method takes a `String` parameter representing the timestamp to be validated. It first checks if the timestamp is null. If it is null, a `InvalidTimeStampException` with the message "Time stamp is required" is thrown. Next, it attempts to parse the timestamp using `LocalDateTime.parse()`. If the parsing fails due to an invalid format, a `TimeStampException` with the message "Invalid format" is thrown.
 
 ### Dependencies
 
