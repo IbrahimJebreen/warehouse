@@ -24,7 +24,7 @@ class DealIdValidatorTest {
 
     @Test
     public void givenValidIdAndNotExist_whenValidate_thenExpectedResult() {
-        Mockito.when(dealRepository.countByDealId(eq(11))).thenReturn(1L);
+        Mockito.when(dealRepository.countByDealId(eq(11))).thenReturn(0L);
         Assertions.assertDoesNotThrow(() -> dealIdValidator.validate(11));
     }
 

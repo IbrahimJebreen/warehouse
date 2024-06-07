@@ -19,7 +19,7 @@ public class DealIdValidator {
             throw new InvalidDealIdException("Id is required");
         }
 
-        if (dealRepository.countByDealId(dealId) > 1) {
+        if (dealRepository.countByDealId(dealId) >= 1) {
             throw new InvalidDealIdException("Deal request already exists");
         }
 
