@@ -75,7 +75,7 @@ The `DealIdValidator` class validates deal IDs within the warehouse system.
 
 ## Validator Description
 
-This validator class ensures the uniqueness and validity of deal IDs used in the warehouse. It checks whether the provided deal ID is not zero and if it's already existing in the database. If the deal ID is not unique or zero, it throws an `IdException`.
+This validator class ensures the uniqueness and validity of deal IDs used in the warehouse. It checks whether the provided deal ID is not zero and if it's already existing in the database. If the deal ID is not unique or zero, it throws an `InvalidIdException`.
 
 ## Constructor
 
@@ -102,7 +102,7 @@ The `AmountValidator` class is responsible for validating amounts, typically rep
 
 #### `validate(BigDecimal amount)`
 
-This method takes a `BigDecimal` parameter representing the amount to be validated. It first checks if the amount is null. If it is null, an `InvalidAmountException` with the message "Amount is required" is thrown. Next, it compares the amount with zero. If the amount is less than or equal to zero, another `AmountException` is thrown with the message "The amount is less than or equal to zero".
+This method takes a `BigDecimal` parameter representing the amount to be validated. It first checks if the amount is null. If it is null, an `InvalidAmountException` with the message "Amount is required" is thrown. Next, it compares the amount with zero. If the amount is less than or equal to zero, another `InvalidAmountException` is thrown with the message "The amount is less than or equal to zero".
 
 ### Dependencies
 
@@ -135,7 +135,7 @@ The `TimeStampValidator` class is responsible for validating timestamp strings. 
 
 #### `validate(String timeStamp)`
 
-This method takes a `String` parameter representing the timestamp to be validated. It first checks if the timestamp is null. If it is null, a `InvalidTimeStampException` with the message "Time stamp is required" is thrown. Next, it attempts to parse the timestamp using `LocalDateTime.parse()`. If the parsing fails due to an invalid format, a `TimeStampException` with the message "Invalid format" is thrown.
+This method takes a `String` parameter representing the timestamp to be validated. It first checks if the timestamp is null. If it is null, a `InvalidTimeStampException` with the message "Time stamp is required" is thrown. Next, it attempts to parse the timestamp using `LocalDateTime.parse()`. If the parsing fails due to an invalid format, a `InvalidTimeStampException` with the message "Invalid format" is thrown.
 
 ### Dependencies
 
