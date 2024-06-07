@@ -37,18 +37,20 @@ public class DealService {
 
     @Transactional(noRollbackFor = {RuntimeException.class})
     public void addDeal(RequestDeal requestDeal) {
-        Deal deal = dealMapper.toDeal(requestDeal);
-        dealRepository.save(deal);
-        log.info("Started add deal ...");
-        log.info("validating Id {}", requestDeal.getDealId());
+        log.info("Starting add deal request ...");
+        log.info("validating deal Id {}", requestDeal.getDealId());
         dealIdValidator.validate(requestDeal.getDealId());
+        Deal deal = dealMapper.toDeal(requestDeal);
+        log.info("trying to save deal on DB {}", requestDeal.getDealId());
+        dealRepository.save(deal);
+        log.info("deal is saved successfully on the DB {}", requestDeal.getDealId());
         log.info("validating ISO code from currency: {} to currency: {}", requestDeal.getFromCurrency(), requestDeal.getToCurrency());
         isoCodeValidator.validate(requestDeal.getFromCurrency(), requestDeal.getToCurrency());
         log.info("validating timestamp: {}", requestDeal.getTimeStamp());
         timeStampValidator.validate(String.valueOf(requestDeal.getTimeStamp()));
         log.info("validating amount {}", requestDeal.getAmount());
         amountValidator.validate(requestDeal.getAmount());
-        log.info("add deal is successful");
+        log.info("Deal is added successfully");
     }
 
     public List<RequestDeal> findAll() {
